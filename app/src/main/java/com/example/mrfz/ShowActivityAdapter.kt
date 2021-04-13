@@ -1,20 +1,23 @@
 package com.example.mrfz
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.mrfz.ThisApplication.Companion.context
+import com.google.android.material.card.MaterialCardView
 
-open class ItemAdapter(private val fragment:Fragment, val items:List<Item>):
-RecyclerView.Adapter<ItemAdapter.ViewHolder>(){
+
+open class ShowActivityAdapter(val context: Context, val items:List<Item>):
+RecyclerView.Adapter<ShowActivityAdapter.ViewHolder>(){
     inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
         val itemName: TextView=view.findViewById(R.id.itemname)
         val itemImage:ImageView=view.findViewById(R.id.imageView)
+        val cardView:MaterialCardView=view.findViewById(R.id.card_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
