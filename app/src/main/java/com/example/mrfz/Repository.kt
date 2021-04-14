@@ -9,7 +9,7 @@ import kotlin.concurrent.thread
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
-    var chosenItems = ArrayList<Item>()//放选中的项，之后全部存入
+    var chosenItems = mutableListOf<Item>()//放选中的项，之后全部存入
     val db = Room.databaseBuilder(
         context,
         AppDatabase::class.java, "database-name"

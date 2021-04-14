@@ -10,7 +10,7 @@ import android.widget.TextView
 import kotlin.concurrent.thread
 
 
-class SelectActivityAdapter(context: Context, items: List<Item>) :
+class SelectActivityAdapter(context: Context, items:List<Item>) :
     ShowActivityAdapter(context, items) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
@@ -21,13 +21,13 @@ class SelectActivityAdapter(context: Context, items: List<Item>) :
         holder.itemView.setOnClickListener {
             val position = holder.adapterPosition
             items[position].isChecked = !items[position].isChecked
-            SelectActivity.Manager.NameTextView.text = items[position].name
+            SelectActivity.NameTextView.text = items[position].name
             if (items[position].isChecked) {
-//                Repository.chosenItems.add(items[position])
-                holder.cardView.setBackgroundColor(Color.parseColor("FF018786"))
+                Repository.chosenItems.add(items[position])
+                holder.cardView.setBackgroundColor(Color.parseColor("#FF3700B3"))
             } else {
-//                Repository.chosenItems.remove(items[position])
-                holder.cardView.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+                Repository.chosenItems.remove(items[position])
+                holder.cardView.setBackgroundColor(Color.parseColor("#FF3700B3"))
             }
         }
         return holder

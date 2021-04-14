@@ -17,15 +17,13 @@ class ShowActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var items= ArrayList<Item>()
         super.onCreate(savedInstanceState)
+        context=applicationContext
         setContentView(R.layout.activity_show)
+        val items=Repository.getItems()
         fab2.setOnClickListener {
             val intent= Intent(this,SelectActivity::class.java)
             startActivity(intent)
-        }
-        thread{
-            items= Repository.getItems() as ArrayList<Item>
         }
         val layoutManager= GridLayoutManager(this,6)
         layoutManager.orientation=GridLayoutManager.HORIZONTAL

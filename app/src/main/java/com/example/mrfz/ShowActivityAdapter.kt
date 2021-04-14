@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
+import kotlin.concurrent.thread
 
 
 open class ShowActivityAdapter(val context: Context, val items:List<Item>):

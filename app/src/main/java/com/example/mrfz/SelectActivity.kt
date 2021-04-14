@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_select.*
+import kotlin.concurrent.thread
 
 
 class SelectActivity : AppCompatActivity() {
@@ -40,6 +41,11 @@ class SelectActivity : AppCompatActivity() {
         val adapter=SelectActivityAdapter(this,items)
         select_recyclerview.adapter=adapter
         fab.setOnClickListener {
+            thread {
+                for (item in Repository.chosenItems){
+                    Repository.insert(item)
+                }
+            }
             val intent= Intent(this,ShowActivity::class.java)
             startActivity(intent)
         }
