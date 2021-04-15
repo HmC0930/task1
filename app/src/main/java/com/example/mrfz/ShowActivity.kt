@@ -21,10 +21,6 @@ class ShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show)
 
         var items:List<Item> = emptyList()
-        val layoutManager = GridLayoutManager(this, 6)
-        layoutManager.orientation = GridLayoutManager.HORIZONTAL
-        show_recyclerview.layoutManager = layoutManager
-
         val adapter = ShowActivityAdapter(this, items)
         val handler=object :Handler(Looper.getMainLooper()){
             override fun handleMessage(msg: Message) {
@@ -46,7 +42,10 @@ class ShowActivity : AppCompatActivity() {
             msg.what=1
             handler.sendMessage(msg)
         }
-
+        val layoutManager = GridLayoutManager(this, 6)
+        layoutManager.orientation = GridLayoutManager.HORIZONTAL
+        show_recyclerview.layoutManager = layoutManager
+        show_recyclerview.adapter = adapter
         fab2.setOnClickListener {
             val intent = Intent(this, SelectActivity::class.java)
             startActivity(intent)
