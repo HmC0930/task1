@@ -1,20 +1,17 @@
 package com.example.mrfz
 
-import android.content.Context
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.card.MaterialCardView
-import kotlin.concurrent.thread
 
 
-open class ShowActivityAdapter(val context: Context, val items:List<Item>):
+open class ShowActivityAdapter(val context: Handler, val items:List<Item>):
 RecyclerView.Adapter<ShowActivityAdapter.ViewHolder>(){
     inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
         val itemName: TextView=view.findViewById(R.id.itemname)

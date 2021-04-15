@@ -1,7 +1,5 @@
 package com.example.mrfz
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,8 +8,6 @@ import android.os.Looper
 import android.os.Message
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.mrfz.Repository.db
-import kotlinx.android.synthetic.main.activity_select.*
 import kotlinx.android.synthetic.main.activity_show.*
 import kotlin.concurrent.thread
 
@@ -21,20 +17,18 @@ class ShowActivity : AppCompatActivity() {
         setContentView(R.layout.activity_show)
 
         var items:List<Item> = emptyList()
-        val adapter = ShowActivityAdapter(this, items)
+        lateinit var adapter:ShowActivityAdapter
         val handler=object :Handler(Looper.getMainLooper()){
             override fun handleMessage(msg: Message) {
-//                Log.d("TAG", "msg: " + msg)
-//                adapter.notifyDataSetChanged()
                 when(msg.what){
 
-                    1 -> {adapter.notifyDataSetChanged()
+                    1 -> {//adapter.notifyDataSetChanged()
+                        adapter = ShowActivityAdapter(  this , items)
                          Log.d("TAG", "msg: " + msg)
                     }
                 }
             }
         }
-        show_recyclerview.adapter = adapter
         thread {
             val msg=Message()
             items = Repository.getItems()
@@ -42,6 +36,7 @@ class ShowActivity : AppCompatActivity() {
             msg.what=1
             handler.sendMessage(msg)
         }
+        show_recyclerview.adapter = adapter
         val layoutManager = GridLayoutManager(this, 6)
         layoutManager.orientation = GridLayoutManager.HORIZONTAL
         show_recyclerview.layoutManager = layoutManager
