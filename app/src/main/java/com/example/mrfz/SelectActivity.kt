@@ -34,6 +34,7 @@ class SelectActivity : AppCompatActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Repository.db;
         setContentView(R.layout.activity_select)
         NameTextView=nameTextView
         val layoutManager=GridLayoutManager(this,2)

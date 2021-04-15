@@ -4,12 +4,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.lifecycle.LiveData
-import com.example.mrfz.ShowActivity.Companion.context
+import com.example.mrfz.ThisApplication.Companion.context
 import kotlin.concurrent.thread
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
-    var chosenItems = mutableListOf<Item>()//放选中的项，之后全部存入
+    var chosenItems = mutableListOf<Item>()//放选中的项的position，之后全部存入数据库
     val db = Room.databaseBuilder(
         context,
         AppDatabase::class.java, "database-name"

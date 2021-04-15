@@ -24,10 +24,10 @@ class SelectActivityAdapter(context: Context, items:List<Item>) :
             SelectActivity.NameTextView.text = items[position].name
             if (items[position].isChecked) {
                 Repository.chosenItems.add(items[position])
-                holder.cardView.setBackgroundColor(Color.parseColor("#FF3700B3"))
+                holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#FF3700B3"))
             } else {
                 Repository.chosenItems.remove(items[position])
-                holder.cardView.setBackgroundColor(Color.parseColor("#FF3700B3"))
+                holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
             }
         }
         return holder
@@ -35,7 +35,6 @@ class SelectActivityAdapter(context: Context, items:List<Item>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-
     }
 
 

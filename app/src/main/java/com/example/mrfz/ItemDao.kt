@@ -1,11 +1,8 @@
 package com.example.mrfz
 
-import androidx.lifecycle.MutableLiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
+@Dao
 interface ItemDao {
     @Insert
     fun insertAll(vararg items:Item)

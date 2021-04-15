@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,7 @@ RecyclerView.Adapter<ShowActivityAdapter.ViewHolder>(){
     inner class ViewHolder(view:View):RecyclerView.ViewHolder(view){
         val itemName: TextView=view.findViewById(R.id.itemname)
         val itemImage:ImageView=view.findViewById(R.id.imageView)
-        val cardView:MaterialCardView=view.findViewById(R.id.card_view)
+        val itemLinearLayout:LinearLayout=view.findViewById(R.id.item_linearlayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

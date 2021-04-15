@@ -11,24 +11,23 @@ import kotlinx.android.synthetic.main.activity_show.*
 import kotlin.concurrent.thread
 
 class ShowActivity : AppCompatActivity() {
-        companion object {
-        @SuppressLint("StaticFieldLeak")
-        lateinit var context: Context
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context=applicationContext
         setContentView(R.layout.activity_show)
-        val items=Repository.getItems()
+        var items: List<Item>
+        items = Repository.chosenItems
+//        thread {
+//            items = Repository.getItems()
+//        }
+        val layoutManager = GridLayoutManager(this, 6)
+        layoutManager.orientation = GridLayoutManager.HORIZONTAL
+        show_recyclerview.layoutManager = layoutManager
+        val adapter = ShowActivityAdapter(this, items)
+        show_recyclerview.adapter = adapter
         fab2.setOnClickListener {
-            val intent= Intent(this,SelectActivity::class.java)
+            val intent = Intent(this, SelectActivity::class.java)
             startActivity(intent)
         }
-        val layoutManager= GridLayoutManager(this,6)
-        layoutManager.orientation=GridLayoutManager.HORIZONTAL
-        show_recyclerview.layoutManager=layoutManager
-        val adapter=ShowActivityAdapter(this,items)
-        select_recyclerview.adapter=adapter
     }
+
 }
