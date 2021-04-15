@@ -16,6 +16,9 @@ interface ItemDao {
     @Update
     fun updateItems(vararg items:Item)
 
-    @Query("SELECT*FROM item")
+    @Query("SELECT*FROM Item")
     fun getAll():List<Item>
+
+    @Update
+    fun upDateItem(newItem: Item)
 }

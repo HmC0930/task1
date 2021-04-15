@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.mrfz.Repository.db
 import kotlinx.android.synthetic.main.activity_select.*
 import kotlin.concurrent.thread
 
@@ -34,7 +35,10 @@ class SelectActivity : AppCompatActivity() {
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Repository.db;
+        Repository.db
+        thread {
+            db.clearAllTables()
+        }
         setContentView(R.layout.activity_select)
         NameTextView=nameTextView
         val layoutManager=GridLayoutManager(this,2)
@@ -43,8 +47,10 @@ class SelectActivity : AppCompatActivity() {
         select_recyclerview.adapter=adapter
         fab.setOnClickListener {
             thread {
-                for (item in Repository.chosenItems){
-                    Repository.insert(item)
+                for (item in items){
+                    if (item.isChecked){
+                        Repository.insert(item)
+                    }
                 }
             }
             val intent= Intent(this,ShowActivity::class.java)

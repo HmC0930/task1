@@ -7,11 +7,9 @@ import androidx.room.ColumnInfo
 
 @Entity
 data class Item(
-                @ColumnInfo(name="name")
+                @PrimaryKey
                 val name:String,
                 @ColumnInfo(name="imageID")
                 val imageID:Int?,
                 var isChecked:Boolean=false,
-                @PrimaryKey(autoGenerate = true)
-                var id:Long=0
 )

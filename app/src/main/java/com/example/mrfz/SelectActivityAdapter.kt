@@ -23,10 +23,8 @@ class SelectActivityAdapter(context: Context, items:List<Item>) :
             items[position].isChecked = !items[position].isChecked
             SelectActivity.NameTextView.text = items[position].name
             if (items[position].isChecked) {
-                Repository.chosenItems.add(items[position])
                 holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#FF3700B3"))
             } else {
-                Repository.chosenItems.remove(items[position])
                 holder.itemLinearLayout.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
             }
         }
